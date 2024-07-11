@@ -1,0 +1,9 @@
+{
+  "appAuthorMenu": [
+    {
+      "label": "Profile",
+      "icon": "user",
+      "url": "/profile/profile"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+<div
+  class="relative main-content py-[10px] bg-top bg-no-repeat dark:bg-[#010312] bg-contain"
+>
+  <div class="admin">
+    <div nz-row class="justify-center">
+      <div
+        class="rounded-6 shadow_[0px_5px_20px_rgba(173,181,217, 0.03)] dark:shadow_[0px_5px_15px_rgba(0, 0, 0, .1)] bg-white dark:bg-[#1b1d2a]"
+        style="width: 100%"
+      >
+        <div class="py-[30px] px-[40px] content">
+          <form
+            nz-form
+            [formGroup]="signUpForm"
+            class="login-form"
+            nzLayout="vertical"
+            (ngSubmit)="submitForm()"
+          >
+            <nz-form-item>
+              <nz-form-label
+                nzRequired
+                nzFor="nomPrenom"
+                class="text-[14px] leading-[1.4285714286] font-medium [&>label]:text-dark [&>label]:dark:text-white/[.87] capitalize inline-block"
+              >
+                Nom
+              </nz-form-label>
+
+              <input
+                readonly
+                type="text"
+                nz-input
+                formControlName="nomPrenom"
+                [value]="getToken()"
+                class="flex items-center shadow-none py-[10px] px-[20px] h-[48px] border-1 border-regular dark:border-white/10 rounded-4 w-full text-[14px] font-normal leading-[1.5] placeholder:text-[#A0A0A0] dark:bg-white/10 dark:text-white/60"
+              />
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-label
+                nzRequired
+                nzFor="date"
+                class="text-[14px] leading-[1.4285714286] font-medium [&>label]:text-dark [&>label]:dark:text-white/[.87] capitalize inline-block"
+              >
+                Date
+              </nz-form-label>
+              <nz-form-control nzErrorTip="Veuillez saisir votre date ">
+                <input
+                  type="date"
+                  nz-input
+                  formControlName="date"
+                  placeholder="Date"
+                  id="date"
+                  class="flex items-center shadow-none py-[10px] px-[20px] h-[48px] border-1 border-regular dark:border-white/10 rounded-4 w-full text-[14px] font-normal leading-[1.5] placeholder:text-[#A0A0A0] dark:bg-white/10 dark:text-white/60"
+                />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item class="block">
+              <nz-form-label
+                nzFor="nomPlat"
+                class="text-[14px] w-full leading-[1.4285714286] font-medium mb-[8px] capitalize inline-block"
+              >
+                Nom du plat
+              </nz-form-label>
+              <nz-form-control nzErrorTip="Veuillez choisir un plat">
+                <select
+                  nz-select
+                  formControlName="nomPlat"
+                  id="nomPlat"
+                  class="flex items-center shadow-none py-[10px] px-[20px] h-[48px] border-1 border-regular dark:border-white/10 rounded-4 w-full text-[14px] font-normal leading-[1.5] placeholder:text-[#A0A0A0] dark:bg-white/10 dark:text-white/60"
+                >
+                  <option readOnly selected>choisir un plat</option>
+                  <option *ngFor="let plat of listePlats">
+                    {{ plat.nomPlat }}
+                  </option>
+                </select>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control>
+                <div>
+                  <button
+                    nz-button
+                    class="login-form-button login-form-margin inline-flex items-center justify-center w-full h-[48px] text-14 rounded-6 font-medium bg-primary text-white cursor-pointer hover:bg-primary-hbr transition duration-300"
+                    style="
+                      width: 20% !important;
+                      background: linear-gradient(
+                        to right,
+                        #1960a9 0%,
+                        #9fc327 100%
+                      );
+                    "
+                    [nzType]="'primary'"
+                    (click)="reserver()"
+                  >
+                    Commander
+                  </button>
+                </div>
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
