@@ -1,126 +1,146 @@
-<div
-  class="relative main-content py-[50px] bg-top bg-no-repeat bg-[url('/assets/images/shape/admin-bg-light.png')] dark:bg-[url('/assets/images/shape/admin-bg-dark.png')] dark:bg-[#010312] bg-contain"
->
-  <div class="admin">
-    <div class="text-center">
-      <img
-        class="inline dark:hidden"
-        src="../../../assets/images/logo/logo_global(sans bg).png"
-        alt="image"
-        style="width: 150px"
-      />
-      <img
-        class="hidden dark:inline"
-        src="../../../assets/images/logo/logo-white.png"
-        alt="image"
-      />
-    </div>
-    <div nz-row class="justify-center">
-      <div nz-col nzXs="24" nzSm="18" nzMd="12" nzXl="8" nzXXl="6">
-        <div
-          class="rounded-6 mt-[25px] shadow_[0px_5px_20px_rgba(173,181,217, 0.03)] dark:shadow_[0px_5px_15px_rgba(0, 0, 0, .1)] bg-deepBG dark:bg-[#1b1d2a]"
-        >
-          <div
-            class="p-[25px] text-center border-b border-regular dark:border-white/[.05] top"
-          >
-            <h2
-              class="text-18 font-semibold leading-[1] mb-0 text-dark dark:text-white/[.87] title"
-            >
-              Connexion
-            </h2>
-          </div>
-          <div class="py-[30px] px-[40px] content">
-            <form
-              nz-form
-              [formGroup]="validateForm"
-              nzLayout="vertical"
-              class="login-form"
-              (ngSubmit)="submitForm()"
-            >
-              <nz-form-item class="block mb-0">
-                <nz-form-label
-                  class="text-[14px] w-full leading-[1.4285714286] font-medium [&>label]:text-dark [&>label]:dark:text-white/[.87] mb-[8px] capitalize inline-block"
-                  nzRequired
-                  nzFor="userName"
-                >
-                  Adresse E-mail</nz-form-label
-                >
-                <nz-form-control nzErrorTip="The input is not valid E-mail!">
-                  <input
-                    class="flex items-center shadow-none py-[10px] px-[20px] h-[48px] border-1 border-regular dark:border-white/10 rounded-4 w-full text-[14px] font-normal leading-[1.5] placeholder:text-[#A0A0A0] dark:bg-white/10 dark:text-white/60"
-                    nz-input
-                    formControlName="userName"
-                    placeholder="Veuillez saisir votre adresse e-mail"
-                    id="userName"
-                  />
-                </nz-form-control>
-              </nz-form-item>
-              <nz-form-item class="block mb-0 mt-[25px]">
-                <nz-form-label
-                  class="text-[14px] leading-[1.4285714286] font-medium [&>label]:text-dark [&>label]:dark:text-white/[.87] capitalize inline-block"
-                  nzRequired
-                  nzFor="password"
-                  >Mot de passe</nz-form-label
-                >
-                <nz-form-control nzErrorTip="Please input your Password!">
-                  <nz-input-group
-                    class="flex items-center shadow-none py-[10px] px-[20px] h-[48px] border-1 border-regular dark:border-white/10 rounded-4 w-full text-[14px] font-normal leading-[1.5] dark:bg-white/10"
-                    [nzSuffix]="suffixTemplate"
-                  >
-                    <input
-                      nz-input
-                      formControlName="password"
-                      [type]="passwordVisible ? 'text' : 'password'"
-                      id="password"
-                      placeholder="Veuillez saisir votre mot de passe"
-                      class="placeholder:text-[#A0A0A0] dark:bg-transparent bg-transparent dark:text-white/60"
-                    />
-                  </nz-input-group>
-                  <ng-template #suffixTemplate>
-                    <span
-                      class="[&>svg]:text-theme-gray dark:[&>svg]:text-white/60"
-                      nz-icon
-                      [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
-                      (click)="passwordVisible = !passwordVisible"
-                    ></span>
-                  </ng-template>
-                </nz-form-control>
-              </nz-form-item>
-              <div
-                class="flex items-center justify-between capitalize mb-[19px] mt-[23px]"
-              >
-                <label
-                  nz-checkbox
-                  formControlName="remember"
-                  class="font-normal text-13 leading-[22px] text-light dark:text-white/60"
-                >
-                  <span> Rester connecté</span>
-                </label>
-                <a
-                  class="text-13 text-primary hover:text-dark dark:hover:text-white/[.87]"
-                  routerLink="/authentication/forget-pass"
-                  >mot de passe oublié?</a
-                >
-              </div>
-              <button
-                nz-button
-                type="submit"
-                class="inline-flex items-center justify-center w-full h-[48px] text-14 rounded-6 font-medium bg-primary text-white cursor-pointer hover:bg-primary-hbr border-primary transition duration-300"
-                style="
-                  background: linear-gradient(
-                    to right,
-                    #1960a9 0%,
-                    #9fc327 100%
-                  );
-                "
-              >
-                <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
-                CONNECTER
-              </button>
-            </form>
-          </div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Custom Styles */
+    .bg-cover {
+      background-size: cover;
+    }
+    .bg-center {
+      background-position: center;
+    }
+    .bg-no-repeat {
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body>
+  <div
+    class="relative main-content py-16 bg-no-repeat bg-cover bg-center bg-[url('/assets/images/shape/admin-bg-light.png')] dark:bg-[url('/assets/images/shape/admin-bg-dark.png')] dark:bg-[#010312]"
+  >
+    <div class="flex items-center justify-center min-h-screen px-4">
+      <div class="w-full max-w-md md:max-w-lg lg:max-w-xl px-6 py-8 bg-white dark:bg-[#1b1d2a] rounded-lg shadow-lg dark:shadow-lg">
+        <div class="text-center mb-8">
+          <img
+            class="inline-block dark:hidden"
+            src="../../../assets/images/logo/logo_global(sans bg).png"
+            alt="Logo"
+            style="width: 150px; max-width: 100%; height: auto;"
+          />
+          <img
+            class="hidden dark:inline-block"
+            src="../../../assets/images/logo/logo-white.png"
+            alt="Logo"
+            style="width: 150px; max-width: 100%; height: auto;"
+          />
         </div>
+        <div class="text-center mb-6 border-b border-gray-200 dark:border-white/10">
+          <h2 class="text-lg md:text-2xl font-semibold text-gray-800 dark:text-white">
+            Connexion
+          </h2>
+        </div>
+        <form
+          nz-form
+          [formGroup]="validateForm"
+          nzLayout="vertical"
+          class="login-form"
+          (ngSubmit)="submitForm()"
+        >
+          <nz-form-item class="mb-6">
+            <nz-form-label
+              class="text-sm font-medium text-gray-700 dark:text-white"
+              nzRequired
+              nzFor="userName"
+            >
+              Adresse E-mail
+            </nz-form-label>
+            <nz-form-control nzErrorTip="The input is not valid E-mail!">
+              <input
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm placeholder-gray-500 dark:bg-gray-700 dark:text-white"
+                nz-input
+                formControlName="userName"
+                placeholder="Veuillez saisir votre adresse e-mail"
+                id="userName"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="mb-6">
+            <nz-form-label
+              class="text-sm font-medium text-gray-700 dark:text-white"
+              nzRequired
+              nzFor="password"
+            >
+              Mot de passe
+            </nz-form-label>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-group
+                class="flex items-center border border-gray-300 rounded-lg dark:border-white/10"
+                [nzSuffix]="suffixTemplate"
+              >
+                <input
+                  nz-input
+                  formControlName="password"
+                  [type]="passwordVisible ? 'text' : 'password'"
+                  id="password"
+                  placeholder="Veuillez saisir votre mot de passe"
+                  class="w-full px-4 py-2 text-sm placeholder-gray-500 dark:bg-gray-700 dark:text-white"
+                />
+              </nz-input-group>
+              <ng-template #suffixTemplate>
+                <span
+                  class="text-gray-500 dark:text-white"
+                  nz-icon
+                  [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
+                  (click)="passwordVisible = !passwordVisible"
+                ></span>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <div class="flex items-center justify-between mb-6">
+            <label
+              nz-checkbox
+              formControlName="remember"
+              class="text-sm text-gray-700 dark:text-white"
+            >
+              <span> Rester connecté</span>
+            </label>
+            <a
+              class="text-sm text-primary hover:text-gray-700 dark:hover:text-white"
+              routerLink="/authentication/forget-pass"
+            >
+              Mot de passe oublié ?
+            </a>
+          </div>
+          <button
+            nz-button
+            type="submit"
+            class="w-full h-12 text-sm rounded-lg font-medium text-white bg-[#007bff] hover:bg-[#0056b3] transition duration-300 flex items-center justify-center"
+          >
+            <!-- Updated Icon Color -->
+            <i class="fas fa-cog fa-spin mr-2" [hidden]="!isLoading"></i>
+            CONNECTER
+          </button>
+          <div class="text-center mt-4">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Pas encore inscrit ? 
+              <a
+                href="/authentication/sign-up"
+                class="text-primary hover:text-gray-700 dark:hover:text-white"
+              >
+                Créez un compte
+              </a>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</div>
+</body>
+</html>
